@@ -1,4 +1,5 @@
 package models;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -21,6 +22,7 @@ public class Lote {
 		this.quantidade = quantidade;
 	}
 	
+	//metodos get
 	public String getId() {
 		return id;
 	}
@@ -41,7 +43,23 @@ public class Lote {
 		return dataValidade;
 	}
 
+	//metodos set
+	public void setQuantidade(Long quantidade){
+		this.quantidade = quantidade;
+	}
+
+	public void setDataFabricacao(Date data){
+		this.dataFabricacao = data;
+	}
+
+	public void setDataValidade(Date data){
+		this.dataValidade = data;
+	}
+
+	//metodo toString
 	public String toString() {
 		return "Lote ID: " + getId() + " - Produto: " + getProduto().getNome() + " - " + getQuantidade() + " itens";
 	}
+
+
 }
