@@ -19,14 +19,8 @@ public class ProdutoRepository {
         this.catalogo.put(produto.getId(), produto);
     }
 
-    public void atualizarProduto(String produtoID, String nome, String fabricante){
-        if(!catalogo.containsKey(produtoID)){
-            //donothing
-        } 
-        else{
-            catalogo.get(produtoID).setNome(nome);
-            catalogo.get(produtoID).setFabricante(fabricante);
-        }
+    public void atualizarProduto(String produtoID, Produto novoProduto){
+        this.catalogo.replace(produtoID, novoProduto);
     };
 
     public void removerProduto(String produtoID){
@@ -35,13 +29,8 @@ public class ProdutoRepository {
 
     public Produto recuperaProduto(String produtoID){
 
-        if(catalogo.containsKey(produtoID)){
-            return catalogo.get(produtoID);
-        }
-        else{
-            return null;
-        }
-        
+        return this.catalogo.get(produtoID);
+
     };
 
     public List<Produto> listarProdutos(){

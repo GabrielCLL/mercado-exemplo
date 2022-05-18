@@ -1,5 +1,5 @@
 package repositories;
-import java.sql.Date;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,26 +23,12 @@ public class LoteRepository {
         this.catalogo.remove(loteID);
     };
 
-    public void atualizarLote(String loteID, Date dataFabricacao, Date dataValidade, Long quantidade){
-        if(!catalogo.containsKey(loteID)){
-            //donothing
-        } 
-        else{
-            catalogo.get(loteID).setDataFabricacao(dataFabricacao);
-            catalogo.get(loteID).setDataValidade(dataValidade);
-            catalogo.get(loteID).setQuantidade(quantidade);
-        }
+    public void atualizarLote(String loteID, Lote novoLote){
+        this.catalogo.replace(loteID, novoLote);
     };
 
     public Lote recuperaLote(String loteID){
-
-        if(catalogo.containsKey(loteID)){
-            return catalogo.get(loteID);
-        }
-        else{
-            return null;
-        }
-        
+        return this.catalogo.get(loteID);
     };
 
     public List<Lote> listarLotes(){
