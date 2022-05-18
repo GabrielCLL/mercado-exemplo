@@ -10,12 +10,12 @@ import repositories.ProdutoRepository;
 
 public class ProdutoService {
 
-    private static ProdutoRepository catalogoProdutos; 
-    private static LoteRepository catalogoLotes; 
+    private ProdutoRepository catalogoProdutos; 
+    private LoteRepository catalogoLotes; 
 
-    public ProdutoService(){
-       catalogoProdutos = new ProdutoRepository();
-       catalogoLotes = new LoteRepository();
+    public ProdutoService(ProdutoRepository catalogoProdutos, LoteRepository catalogoLotes){
+       this.catalogoProdutos = catalogoProdutos;
+       this.catalogoLotes = catalogoLotes;
     }
 
     public void addProduto(Produto produto) {
@@ -59,6 +59,7 @@ public class ProdutoService {
         return listProdutos;
 
     }
+
     private void addProdutoRepo(Produto produto){
         catalogoProdutos.addProduto(produto);
     }
